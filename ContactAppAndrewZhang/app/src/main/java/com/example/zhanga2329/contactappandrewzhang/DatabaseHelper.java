@@ -2,6 +2,7 @@ package com.example.zhanga2329.contactappandrewzhang;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
@@ -18,7 +19,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     public DatabaseHelper(Context context)
     {
-        super(context, DATABASE_NAME, null, 3);
+        super(context, DATABASE_NAME, null, 4);
     }
 
     @Override
@@ -41,7 +42,12 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         contentValues.put(COL_3, age);
         contentValues.put(COL_4, address);
         long result = db.insert(TABLE_NAME, null, contentValues);
-        if(result == -1) return false;
-        else return true;
+        return result != -1;
+    }
+
+    public Cursor getAllData() {
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor res = db.rawQuery("select * from " + TABLE_NAME, null);
+        return res;
     }
 }

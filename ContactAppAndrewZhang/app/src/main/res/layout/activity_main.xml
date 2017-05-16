@@ -27,17 +27,6 @@
         android:layout_alignParentEnd="true"
         android:layout_toEndOf="@+id/textView" />
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Add Data"
-        android:id="@+id/button_add"
-        android:layout_marginBottom="43dp"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentStart="true"
-        android:onClick="addData"
-        android:nestedScrollingEnabled="false" />
-
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -72,5 +61,22 @@
         android:layout_alignTop="@+id/textView3"
         android:layout_alignEnd="@+id/editText_age"
         android:layout_toEndOf="@+id/textView3" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="ADD DATA"
+        android:id="@+id/button_add"
+        android:layout_alignParentBottom="true"
+        android:onClick="addData" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="VIEW DATA"
+        android:id="@+id/button_view"
+        android:onClick="viewData"
+        android:layout_alignTop="@+id/button_add"
+        android:layout_alignEnd="@+id/editText_age" />
 
 </RelativeLayout>
