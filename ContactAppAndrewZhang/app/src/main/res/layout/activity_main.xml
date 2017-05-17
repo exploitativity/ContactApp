@@ -15,7 +15,6 @@
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="Name:"
         android:id="@+id/textView"
-        android:layout_marginTop="77dp"
         android:layout_alignParentTop="true"
         android:layout_alignParentStart="true" />
 
@@ -23,7 +22,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/editText_name"
-        android:layout_alignTop="@+id/textView"
+        android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
         android:layout_toEndOf="@+id/textView" />
 
@@ -33,15 +32,15 @@
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="Age:"
         android:id="@+id/textView2"
-        android:layout_marginTop="30dp"
+        android:layout_alignParentStart="true"
         android:layout_below="@+id/editText_name"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentLeft="true" />
 
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/editText_age"
-        android:layout_alignTop="@+id/textView2"
+        android:layout_below="@+id/editText_name"
         android:layout_alignParentEnd="true"
         android:layout_alignStart="@+id/editText_name" />
 
@@ -51,7 +50,7 @@
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="Address:"
         android:id="@+id/textView3"
-        android:layout_centerVertical="true"
+        android:layout_below="@+id/editText_age"
         android:layout_alignParentStart="true" />
 
     <EditText
@@ -60,15 +59,17 @@
         android:id="@+id/editText_address"
         android:layout_alignTop="@+id/textView3"
         android:layout_alignEnd="@+id/editText_age"
-        android:layout_toEndOf="@+id/textView3" />
+        android:layout_toEndOf="@+id/button_add" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="ADD DATA"
         android:id="@+id/button_add"
-        android:layout_alignParentBottom="true"
-        android:onClick="addData" />
+        android:onClick="addData"
+        android:layout_marginTop="50dp"
+        android:layout_below="@+id/editText_address"
+        android:layout_alignParentStart="true" />
 
     <Button
         android:layout_width="wrap_content"
@@ -77,6 +78,24 @@
         android:id="@+id/button_view"
         android:onClick="viewData"
         android:layout_alignTop="@+id/button_add"
-        android:layout_alignEnd="@+id/editText_age" />
+        android:layout_alignEnd="@+id/editText_address" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/editText_search"
+        android:layout_marginTop="42dp"
+        android:layout_below="@+id/button_add"
+        android:layout_alignParentStart="true"
+        android:layout_toStartOf="@+id/button_search" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="SEARCH"
+        android:id="@+id/button_search"
+        android:onClick="search"
+        android:layout_alignBottom="@+id/editText_search"
+        android:layout_alignParentEnd="true" />
 
 </RelativeLayout>
