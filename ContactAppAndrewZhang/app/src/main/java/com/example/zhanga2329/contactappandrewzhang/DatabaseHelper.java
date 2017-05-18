@@ -17,6 +17,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public static final String COL_3 = "AGE";
     public static final String COL_4 = "ADDRESS";
 
+    private int currentID = 1;
+
     public DatabaseHelper(Context context)
     {
         super(context, DATABASE_NAME, null, 4);
@@ -26,7 +28,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db)
     {
 
-        db.execSQL("CREATE TABLE " + TABLE_NAME + " (ID INTEGER PRIMARY KEY AUTOINCREMENT, NAME TEXT, AGE TEXT, ADDRESS TEXT)");
+        db.execSQL("CREATE TABLE " + TABLE_NAME + " (ID INTEGER PRIMARY KEY, NAME TEXT, AGE TEXT, ADDRESS TEXT)");
     }
 
     @Override
@@ -38,13 +40,20 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public boolean insertData(String name, String age, String address){
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
+        contentValues.put(COL_1, currentID);
+        currentID++;
         contentValues.put(COL_2, name);
         contentValues.put(COL_3, age);
         contentValues.put(COL_4, address);
         long result = db.insert(TABLE_NAME, null, contentValues);
         return result != -1;
     }
-
+    public int getCurrentID() {
+        return currentID;
+    }
+    public void setCurrentID(int re) {
+        currentID = re;
+    }
     public Cursor getAllData() {
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor res = db.rawQuery("select * from " + TABLE_NAME, null);

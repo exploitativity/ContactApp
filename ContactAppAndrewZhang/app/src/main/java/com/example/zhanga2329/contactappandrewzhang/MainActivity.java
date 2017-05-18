@@ -1,6 +1,7 @@
 package com.example.zhanga2329.contactappandrewzhang;
 
 import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -49,7 +50,7 @@ public class MainActivity extends AppCompatActivity {
         Cursor res = myDb.getAllData();
         if(res.getCount() == 0){
             Log.d("MyContact", "Database is empty!");
-            showMessage("Error", "No data found in database, res.getCount = " +res.getCount());
+            showMessage("Error", "Database is empty.");
             //output message using Log.d and Toast
             return;
         }
@@ -110,7 +111,13 @@ public class MainActivity extends AppCompatActivity {
         // display message using showMessage
         showMessage("Search Results", buffer.toString());
     }
-
+    public void clearAll(View v) {
+        SQLiteDatabase db = myDb.getWritableDatabase();
+        db.execSQL("DELETE FROM " + myDb.TABLE_NAME);
+        myDb.setCurrentID(1);
+        db.close();
+        Toast.makeText(this, "All Data Deleted", Toast.LENGTH_LONG).show();
+    }
     private void showMessage(String title, String message) {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setCancelable(true);
