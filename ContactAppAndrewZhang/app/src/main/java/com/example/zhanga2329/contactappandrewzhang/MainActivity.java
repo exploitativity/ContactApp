@@ -31,6 +31,7 @@ public class MainActivity extends AppCompatActivity {
         editAge = (EditText)(findViewById(R.id.editText_age));
         editAddress = (EditText)(findViewById(R.id.editText_address));
         editSearch = (EditText) (findViewById(R.id.editText_search));
+
     }
     public void addData(View v) {
         boolean isInserted = myDb.insertData(editName.getText().toString(), editAge.getText().toString(), editAddress.getText().toString());
@@ -131,5 +132,10 @@ public class MainActivity extends AppCompatActivity {
         builder.setTitle(title);
         builder.setMessage(message);
         builder.show();
+    }
+    public void clearSearch(View v) {
+        if(editSearch.hasFocus() && editSearch.getText().toString().equals("Search by name")) {
+            editSearch.setText("");
+        }
     }
 }
