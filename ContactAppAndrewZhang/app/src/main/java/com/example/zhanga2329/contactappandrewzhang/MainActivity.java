@@ -39,6 +39,9 @@ public class MainActivity extends AppCompatActivity {
             Log.d("MyContact", "Data Insert Successful");
             //Insert Toast message here
             Toast.makeText(this, "Data Insert Successful", Toast.LENGTH_LONG).show();
+            editName.setText("");
+            editAge.setText("");
+            editAddress.setText("");
         }
         else{
             Log.d("MyContact", "Data Insert Failed");
@@ -57,19 +60,21 @@ public class MainActivity extends AppCompatActivity {
 
         StringBuffer buffer = new StringBuffer();
         //setup a loop with Cursor (res) using moveToNext
-        for(int i = 0; i < res.getColumnCount(); i++)
+        /*for(int i = 0; i < res.getColumnCount(); i++)
         {
             buffer.append(res.getColumnName(i));
             buffer.append("\t");
-        }
+        }*/
         buffer.append("\n");
         res.moveToFirst();
         do
         {
             for(int i = 0; i < res.getColumnCount(); i++)
             {
+                buffer.append(res.getColumnName(i));
+                buffer.append(": ");
                 buffer.append(res.getString(i));
-                buffer.append("\t");
+                buffer.append("\n");
             }
             buffer.append("\n");
         }while(res.moveToNext());
@@ -89,11 +94,11 @@ public class MainActivity extends AppCompatActivity {
 
         StringBuffer buffer = new StringBuffer();
         //setup a loop with Cursor (res) using moveToNext
-        for(int i = 0; i < res.getColumnCount(); i++)
+        /*for(int i = 0; i < res.getColumnCount(); i++)
         {
             buffer.append(res.getColumnName(i));
             buffer.append("\t");
-        }
+        }*/
         buffer.append("\n");
         res.moveToFirst();
         do
@@ -101,6 +106,8 @@ public class MainActivity extends AppCompatActivity {
             if(res.getString(res.getColumnIndex("NAME")).indexOf(editSearch.getText().toString()) > -1){
                 for(int i = 0; i < res.getColumnCount(); i++)
                 {
+                    buffer.append(res.getColumnName(i));
+                    buffer.append(": ");
                     buffer.append(res.getString(i));
                     buffer.append("\t");
                 }
